@@ -35,8 +35,8 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.List
     public void onBindViewHolder(@NonNull FollowingAdapter.ListViewHolder holder, int position) {
         Glide.with(context)
                 .load(listItem.get(position).getAvatarUrl())
-                .into(holder.imgUser);
-        holder.tvUser.setText(listItem.get(position).getLogin());
+                .into(holder.imgUserFollowing);
+        holder.tvUserFollowing.setText(listItem.get(position).getLogin());
     }
 
     @Override
@@ -46,13 +46,13 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.List
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imgUser;
-        TextView tvUser;
+        ImageView imgUserFollowing;
+        TextView tvUserFollowing;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgUser = itemView.findViewById(R.id.img_users_following);
-            tvUser = itemView.findViewById(R.id.tv_login_following);
+            imgUserFollowing = itemView.findViewById(R.id.img_users_following);
+            tvUserFollowing = itemView.findViewById(R.id.tv_login_following);
 
         }
     }

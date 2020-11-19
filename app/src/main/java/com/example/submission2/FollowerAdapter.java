@@ -27,7 +27,7 @@ public class FollowerAdapter extends RecyclerView.Adapter<FollowerAdapter.ListVi
     @NonNull
     @Override
     public FollowerAdapter.ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_follower, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_follower, parent, false);
         return new ListViewHolder(view);
     }
 
@@ -35,8 +35,8 @@ public class FollowerAdapter extends RecyclerView.Adapter<FollowerAdapter.ListVi
     public void onBindViewHolder(@NonNull FollowerAdapter.ListViewHolder holder, int position) {
         Glide.with(context)
                 .load(listItem.get(position).getAvatarUrl())
-                .into(holder.imgUser);
-        holder.tvUser.setText(listItem.get(position).getLogin());
+                .into(holder.imgUserFollower);
+        holder.tvUserFollower.setText(listItem.get(position).getLogin());
     }
 
     @Override
@@ -46,13 +46,13 @@ public class FollowerAdapter extends RecyclerView.Adapter<FollowerAdapter.ListVi
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imgUser;
-        TextView tvUser;
+        ImageView imgUserFollower;
+        TextView tvUserFollower;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgUser = itemView.findViewById(R.id.img_users_follower);
-            tvUser = itemView.findViewById(R.id.tv_login_follower);
+            imgUserFollower = itemView.findViewById(R.id.img_users_follower);
+            tvUserFollower = itemView.findViewById(R.id.tv_login_follower);
 
         }
     }
