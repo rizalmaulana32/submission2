@@ -25,12 +25,12 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FollowerFragment extends Fragment {
+public class FollowingFragment extends Fragment {
 
-    RecyclerView rvFollower;
+    RecyclerView rvFollowing;
     UserModel userModel;
 
-    public FollowerFragment() {
+    public FollowingFragment() {
         // Required empty public constructor
     }
 
@@ -38,7 +38,7 @@ public class FollowerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_follower, container, false);
+        return inflater.inflate(R.layout.fragment_following, container, false);
     }
 
     @Override
@@ -49,28 +49,29 @@ public class FollowerFragment extends Fragment {
         Bundle bundle = detailUserActivity.getIntent().getBundleExtra(ListUserAdapter.DATA_EXTRA);
         userModel = Parcels.unwrap(bundle.getParcelable(ListUserAdapter.DATA_USER));
 
-        rvFollower = view.findViewById(R.id.rv_follower);
-        rvFollower.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        rvFollowing = view.findViewById(R.id.rv_Following);
+        rvFollowing.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        Call<List<FollowerModel>> request = ApiClient.getApiService().getFollower(userModel.getLogin());
-        request.enqueue(new Callback<List<FollowerModel>>() {
+        Call<List<FollowingModel>> request = ApiClient.getApiService().getFollowing(userModel.getLogin());
+        request.enqueue(new Callback<List<FollowingModel>>() {
             @Override
-            public void onResponse(Call<List<FollowerModel>> call, Response<List<FollowerModel>> response) {
-                ArrayList<FollowerModel> listFollower = new ArrayList<>();
+            public void onResponse(Call<List<FollowingModel>> call, Response<List<FollowingModel>> response) {
+                ArrayList<FollowingModel> listFollowing = new ArrayList<>();
                 if (response.isSuccessful()){
-                    if (response.body() != null){
-                        listFollower.addAll(response.body());
-                        rvFollower.setAdapter(new FollowerAdapter(getContext(), listFollower));
+                    if (response != null){
+                        listFollowing.addAll(response.body());
+                        rvFollowing.setAdapter(new FollowingAdapter(getContext(), listFollowing));
                     }
                 } else {
-                    Toast.makeText(getContext(), "Error loading data !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Error request data !", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<FollowerModel>> call, Throwable t) {
-                Toast.makeText(getContext(), "Request Failure " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<FollowingModel>> call, Throwable t) {
+                Toast.makeText(getContext(), "Request failure " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

@@ -1,5 +1,7 @@
 package com.example.submission2;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -22,7 +24,13 @@ public interface ApiServices {
 
     @GET("users/{username}/followers")
     @Headers("Authorization: token 89c3cf5406c6166808b7ea1a7a76c1b0ca7c979f")
-    Call<FollowerModel> getFollower(
+    Call<List<FollowerModel>> getFollower(
+            @Path("username") String username
+    );
+
+    @GET("users/{username}/following")
+    @Headers("Authorization: token 89c3cf5406c6166808b7ea1a7a76c1b0ca7c979f")
+    Call<List<FollowingModel>> getFollowing(
             @Path("username") String username
     );
 

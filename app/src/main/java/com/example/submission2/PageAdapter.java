@@ -39,7 +39,7 @@ public class PageAdapter extends FragmentPagerAdapter {
                 fragment = new FollowerFragment();
                 break;
             case 1:
-                /*fragment = new */
+                fragment = new FollowingFragment();
         }
         return fragment;
     }
