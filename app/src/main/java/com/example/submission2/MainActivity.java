@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle(getString(R.string.github_users));
+        }
+
         progressBar = findViewById(R.id.prograssBar);
         rvUser = findViewById(R.id.rv_users);
         rvUser.setLayoutManager(new LinearLayoutManager(MainActivity.this));

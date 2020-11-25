@@ -29,6 +29,10 @@ public class DetailUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_user);
 
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle(getString(R.string.detail_activity));
+        }
+
         Bundle bundle = getIntent().getBundleExtra(ListUserAdapter.DATA_EXTRA);
         userModel = Parcels.unwrap(bundle.getParcelable(ListUserAdapter.DATA_USER));
 

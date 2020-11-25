@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">submission2</string>
+    <string name="app_name">GitHub Users</string>
     <string name="github_users">GitHub Users</string>
+    <string name="detail_activity">Detail User</string>
     <string name="search_username">Username</string>
     <string name="name">Name</string>
     <string name="username">Username</string>
