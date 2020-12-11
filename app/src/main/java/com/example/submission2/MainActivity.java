@@ -1,16 +1,25 @@
 package com.example.submission2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import com.example.submission2.Adapter.ListUserAdapter;
+import com.example.submission2.Model.ResponseUserModel;
+import com.example.submission2.Model.UserModel;
+import com.example.submission2.Retrofit.ApiClient;
 
 import java.util.ArrayList;
 
@@ -89,5 +98,25 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Error request data ! " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        setMode(item.getItemId());
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setMode(int itemId){
+        switch (itemId){
+            case R.id.action_list:
+                Intent intent = new Intent(this, FavoriteActivity.class);
+                startActivity(intent);
+        }
     }
 }

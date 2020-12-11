@@ -5,10 +5,18 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.submission2.Adapter.ListUserAdapter;
+import com.example.submission2.Adapter.PageAdapter;
+import com.example.submission2.Model.DetailUserModel;
+import com.example.submission2.Model.UserModel;
+import com.example.submission2.Retrofit.ApiClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import org.parceler.Parcels;
@@ -76,6 +84,14 @@ public class DetailUserActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         getSupportActionBar().setElevation(0);
+
+        FloatingActionButton btnFavorite = findViewById(R.id.btn_favorites);
+        btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(DetailUserActivity.this, "Added to favorites", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }

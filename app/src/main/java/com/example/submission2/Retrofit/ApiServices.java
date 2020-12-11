@@ -1,4 +1,9 @@
-package com.example.submission2;
+package com.example.submission2.Retrofit;
+
+import com.example.submission2.Model.DetailUserModel;
+import com.example.submission2.Model.FollowerModel;
+import com.example.submission2.Model.FollowingModel;
+import com.example.submission2.Model.ResponseUserModel;
 
 import java.util.List;
 

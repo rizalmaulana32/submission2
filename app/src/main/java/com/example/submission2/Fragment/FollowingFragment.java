@@ -1,4 +1,4 @@
-package com.example.submission2;
+package com.example.submission2.Fragment;
 
 import android.os.Bundle;
 
@@ -12,6 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.example.submission2.Adapter.FollowingAdapter;
+import com.example.submission2.Adapter.ListUserAdapter;
+import com.example.submission2.Retrofit.ApiClient;
+import com.example.submission2.DetailUserActivity;
+import com.example.submission2.Model.FollowingModel;
+import com.example.submission2.R;
+import com.example.submission2.Model.UserModel;
 
 import org.parceler.Parcels;
 

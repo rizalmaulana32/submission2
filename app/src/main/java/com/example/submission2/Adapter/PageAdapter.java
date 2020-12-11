@@ -1,4 +1,4 @@
-package com.example.submission2;
+package com.example.submission2.Adapter;
 
 import android.content.Context;
 
@@ -8,6 +8,10 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.submission2.Fragment.FollowerFragment;
+import com.example.submission2.Fragment.FollowingFragment;
+import com.example.submission2.R;
 
 public class PageAdapter extends FragmentPagerAdapter {
 

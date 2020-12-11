@@ -1,4 +1,4 @@
-package com.example.submission2;
+package com.example.submission2.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.submission2.DetailUserActivity;
+import com.example.submission2.R;
+import com.example.submission2.Model.UserModel;
 
 import org.parceler.Parcels;
 
