@@ -4,20 +4,24 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import static com.example.submission2.DatabaseContract.UserColumn.TABLE_USER_NAME;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static String DATABASE_NAME = "github_user";
+    private static final String DATABASE_NAME = "dbgithubuser";
+    private final static int DATABASE_VERSION = 2;
 
-    private final static int DATABASE_VERSION = 1;
-
-    private final static String SQL_CREATE_TABLE_NOTE = String.format("CREATE TABLE %s " +
-            "(%s INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + "%s TEXT NOT NULL,"
-            + "%s TEXT NOT NULL)",
-            DatabaseContract.TABLE_NAME,
-            DatabaseContract.NoteColumns._ID,
-            DatabaseContract.NoteColumns.NAME,
-            DatabaseContract.NoteColumns.USERNAME);
+    private final static String SQL_CREATE_TABLE_NOTE = String.format(
+            "CREATE TABLE %s" +
+                    "(%s INTEGER PRIMARY KEY," +
+                    "%s TEXT," +
+                    "%s TEXT NOT NULL," +
+                    "%s TEXT NOT NULL)",
+            TABLE_USER_NAME,
+            DatabaseContract.UserColumn.ID,
+            DatabaseContract.UserColumn.NAME,
+            DatabaseContract.UserColumn.USERNAME,
+            DatabaseContract.UserColumn.AVATAR);
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -30,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_NAME);
         onCreate(sqLiteDatabase);
     }
 }

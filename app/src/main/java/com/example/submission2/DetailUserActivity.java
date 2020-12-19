@@ -3,14 +3,19 @@ package com.example.submission2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.example.submission2.Adapter.ListUserAdapter;
 import com.example.submission2.Adapter.PageAdapter;
 import com.example.submission2.Model.DetailUserModel;
@@ -21,9 +26,13 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.submission2.DatabaseContract.UserColumn.TABLE_USER_NAME;
 
 public class DetailUserActivity extends AppCompatActivity {
 
@@ -31,6 +40,8 @@ public class DetailUserActivity extends AppCompatActivity {
     UserModel userModel;
     TextView login, company, location, repo;
     ImageView imgPhoto;
+    UserHelper userHelper;
+    ArrayList<UserModel> listItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +96,60 @@ public class DetailUserActivity extends AppCompatActivity {
 
         getSupportActionBar().setElevation(0);
 
-        FloatingActionButton btnFavorite = findViewById(R.id.btn_favorites);
-        btnFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(DetailUserActivity.this, "Added to favorites", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        setOnClickFavButton();
+        userHelper = new UserHelper(this);
+        userHelper.open();
+        userHelper = UserHelper.getInstance(getApplicationContext());
     }
+
+    private void setOnClickFavButton(){
+        MaterialFavoriteButton btnFav = findViewById(R.id.btn_favorites);
+        if (EXIST(userModel.getLogin())){
+            btnFav.setFavorite(true);
+            btnFav.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
+                @Override
+                public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                    if (favorite){
+                        listItem = userHelper.getDataUser();
+                        userHelper.userInsert(userModel);
+                        Toast.makeText(DetailUserActivity.this, "Success added favorite", Toast.LENGTH_SHORT).show();
+                    } else {
+                        listItem = userHelper.getDataUser();
+                        userHelper.userDelete(String.valueOf(userModel.getLogin()));
+                        Toast.makeText(DetailUserActivity.this, "Success delete favorite", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } else {
+            btnFav.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
+                @Override
+                public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                    if (favorite){
+                        listItem = userHelper.getDataUser();
+                        userHelper.userInsert(userModel);
+                        Toast.makeText(DetailUserActivity.this, "Success added favorite", Toast.LENGTH_SHORT).show();
+                    } else {
+                        listItem = userHelper.getDataUser();
+                        userHelper.userDelete(String.valueOf(userModel.getId()));
+                        Toast.makeText(DetailUserActivity.this, "Success delete favorite", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private boolean EXIST(String username){
+        String change = DatabaseContract.UserColumn.USERNAME + "+?";
+        String[] changeArg = {username};
+        String limit = "1";
+        //userModel = getIntent().getParcelableExtra("DATA_USER");
+
+        DatabaseHelper userHelper = new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase database = userHelper.getWritableDatabase();
+        @SuppressLint("Recycle")Cursor cursor = database.query(TABLE_USER_NAME, null,change,changeArg,null,null,null,limit);
+        boolean exist = (cursor.getCount() > 0);
+        cursor.close();
+        return exist;
+    }
+
 }

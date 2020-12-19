@@ -1,14 +1,24 @@
 package com.example.submission2;
 
+import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class DatabaseContract {
 
-    static String TABLE_NAME = "github_users_fav";
+    public static final String AUTH = "com.example.submission2";
+    public static final String SCHEME = "content";
 
-    static final class NoteColumns implements BaseColumns {
-        static String NAME = "name";
-        static String USERNAME = "user_name";
+    public static final class UserColumn implements BaseColumns{
+        public static final String TABLE_USER_NAME = "user";
+        public static final String ID = "id";
+        public static final String NAME = "name";
+        public static final String USERNAME = "username";
+        public static final String AVATAR = "avatar";
+
+        public static final Uri CONTENT_URI = new Uri.Builder().scheme(SCHEME)
+                .authority(AUTH)
+                .appendPath(TABLE_USER_NAME)
+                .build();
     }
 
 }
