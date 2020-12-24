@@ -2,6 +2,7 @@ package com.example.submission2.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.submission2.DetailUserActivity;
 import com.example.submission2.Model.UserModel;
 import com.example.submission2.R;
+import com.example.submission2.UserHelper;
 
 import java.util.ArrayList;
 
@@ -52,7 +55,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.NoteViewHolder> 
         return listItem.size();
     }
 
-    public class NoteViewHolder extends RecyclerView.ViewHolder {
+    public class NoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvName, tvUserName;
         ImageView imgFavUser;
@@ -62,8 +65,15 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.NoteViewHolder> 
             tvName = itemView.findViewById(R.id.tv_fav_name);
             tvUserName = itemView.findViewById(R.id.tv_fav_user_name);
             imgFavUser = itemView.findViewById(R.id.img_user_favorite);
+            itemView.setOnClickListener(this);
         }
 
-
+        @Override
+        public void onClick(View view) {
+            UserModel userModel = listItem.get(getAdapterPosition());
+            Intent intent = new Intent(context, DetailUserActivity.class);
+            intent.putExtra("datauser", userModel);
+            view.getContext().startActivity(intent);
+        }
     }
 }

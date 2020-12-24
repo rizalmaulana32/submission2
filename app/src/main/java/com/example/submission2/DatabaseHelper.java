@@ -13,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private final static String SQL_CREATE_TABLE_NOTE = String.format(
             "CREATE TABLE %s" +
-                    "(%s INTEGER PRIMARY KEY," +
+                    "(%s INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "%s TEXT," +
                     "%s TEXT NOT NULL," +
                     "%s TEXT NOT NULL)",

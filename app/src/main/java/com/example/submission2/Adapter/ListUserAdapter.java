@@ -50,10 +50,11 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UserModel userModel = listItem.get(position);
                 Intent moveDetailActivity = new Intent(context, DetailUserActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(DATA_USER, Parcels.wrap(listItem.get(position)));
-                moveDetailActivity.putExtra(DATA_EXTRA, bundle);
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelable(DATA_USER, Parcels.wrap(listItem.get(position)));
+                moveDetailActivity.putExtra("datauser", userModel);
                 context.startActivity(moveDetailActivity);
             }
         });

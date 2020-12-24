@@ -25,6 +25,7 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,9 +54,7 @@ public class FollowerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        DetailUserActivity detailUserActivity = (DetailUserActivity) getActivity();
-        Bundle bundle = detailUserActivity.getIntent().getBundleExtra(ListUserAdapter.DATA_EXTRA);
-        userModel = Parcels.unwrap(bundle.getParcelable(ListUserAdapter.DATA_USER));
+        UserModel userModel = Objects.requireNonNull(getActivity().getIntent().getParcelableExtra("datauser"));
 
         rvFollower = view.findViewById(R.id.rv_follower);
         rvFollower.setLayoutManager(new LinearLayoutManager(view.getContext()));

@@ -113,7 +113,6 @@ public class UserHelper {
         return database.delete(TABLE_USER_NAME,ID + " = '" + id + "'", null);
     }
 
-
     public int DeleteProvider(String id) {
         return database.delete(TABLE_USER_NAME, ID+ "=?",new String[]{id});
     }
@@ -123,7 +122,5 @@ public class UserHelper {
     public long InsertProvider(ContentValues values) {
         return database.insert(TABLE_USER_NAME, null, values);
     }
-
-
 
 }
