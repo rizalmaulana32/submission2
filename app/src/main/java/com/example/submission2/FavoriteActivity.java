@@ -18,7 +18,6 @@ public class FavoriteActivity extends AppCompatActivity {
     ArrayList<UserModel> userModel = new ArrayList<>();
     FavAdapter favAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

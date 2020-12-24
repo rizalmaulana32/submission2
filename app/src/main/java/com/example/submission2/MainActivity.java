@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         rvUser = findViewById(R.id.rv_users);
         rvUser.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
+        onSearchUser();
+
+    }
+
+    private void onSearchUser(){
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         if (searchManager != null){
             SearchView searchView = (SearchView) findViewById(R.id.searchView);

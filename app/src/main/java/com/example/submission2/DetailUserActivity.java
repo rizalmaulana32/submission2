@@ -61,7 +61,6 @@ public class DetailUserActivity extends AppCompatActivity {
         getData();
         onViewPager();
         setOnClickFavButton();
-        userHelper = UserHelper.getInstance(getApplicationContext());
     }
 
     private void getData() {
