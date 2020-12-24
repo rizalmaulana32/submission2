@@ -117,11 +117,20 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void intentFavorite(){
+
+    }
+
     private void setMode(int itemId){
         switch (itemId){
             case R.id.action_list:
-                Intent intent = new Intent(this, FavoriteActivity.class);
+                Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.action_setting:
+                Intent settingIntent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(settingIntent);
+                break;
         }
     }
 }

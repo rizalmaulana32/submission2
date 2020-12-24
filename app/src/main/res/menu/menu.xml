@@ -6,6 +6,12 @@
         android:id="@+id/action_list"
         android:title="@string/favorites"
         android:icon="@drawable/ic_baseline_favorite_border_24"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_setting"
+        android:title="@string/setting"
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="always"/>
 
 </menu>

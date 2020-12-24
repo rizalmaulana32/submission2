@@ -8,23 +8,20 @@ import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.submission2.DataBase.DatabaseContract;
+import com.example.submission2.DataBase.DatabaseHelper;
+import com.example.submission2.DataBase.UserHelper;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
-import com.example.submission2.Adapter.ListUserAdapter;
 import com.example.submission2.Adapter.PageAdapter;
 import com.example.submission2.Model.DetailUserModel;
 import com.example.submission2.Model.UserModel;
 import com.example.submission2.Retrofit.ApiClient;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-
-import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -32,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.submission2.DatabaseContract.UserColumn.TABLE_USER_NAME;
+import static com.example.submission2.DataBase.DatabaseContract.UserColumn.TABLE_USER_NAME;
 
 public class DetailUserActivity extends AppCompatActivity {
 

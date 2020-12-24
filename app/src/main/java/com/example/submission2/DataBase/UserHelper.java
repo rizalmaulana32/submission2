@@ -1,4 +1,4 @@
-package com.example.submission2;
+package com.example.submission2.DataBase;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,11 +11,11 @@ import com.example.submission2.Model.UserModel;
 
 import java.util.ArrayList;
 
-import static com.example.submission2.DatabaseContract.UserColumn.ID;
-import static com.example.submission2.DatabaseContract.UserColumn.AVATAR;
-import static com.example.submission2.DatabaseContract.UserColumn.NAME;
-import static com.example.submission2.DatabaseContract.UserColumn.TABLE_USER_NAME;
-import static com.example.submission2.DatabaseContract.UserColumn.USERNAME;
+import static com.example.submission2.DataBase.DatabaseContract.UserColumn.ID;
+import static com.example.submission2.DataBase.DatabaseContract.UserColumn.AVATAR;
+import static com.example.submission2.DataBase.DatabaseContract.UserColumn.NAME;
+import static com.example.submission2.DataBase.DatabaseContract.UserColumn.TABLE_USER_NAME;
+import static com.example.submission2.DataBase.DatabaseContract.UserColumn.USERNAME;
 
 public class UserHelper {
 

@@ -1,4 +1,4 @@
-package com.example.submission2;
+package com.example.submission2.DataBase;
 
 import android.net.Uri;
 import android.provider.BaseColumns;

@@ -5,9 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.example.submission2.Adapter.FavAdapter;
+import com.example.submission2.DataBase.UserHelper;
 import com.example.submission2.Model.UserModel;
 
 import java.util.ArrayList;

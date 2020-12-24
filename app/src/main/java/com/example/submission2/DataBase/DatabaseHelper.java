@@ -1,10 +1,12 @@
-package com.example.submission2;
+package com.example.submission2.DataBase;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static com.example.submission2.DatabaseContract.UserColumn.TABLE_USER_NAME;
+import com.example.submission2.DataBase.DatabaseContract;
+
+import static com.example.submission2.DataBase.DatabaseContract.UserColumn.TABLE_USER_NAME;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
