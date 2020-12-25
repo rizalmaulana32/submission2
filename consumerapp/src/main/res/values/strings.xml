@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">GitHub Users</string>
+    <string name="github_users">GitHub Users</string>
+    <string name="detail_activity">Detail User</string>
+    <string name="search_username">Username</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="company_name">Company Name</string>
+    <string name="location">Location</string>
+    <string name="repository">Repository</string>
+    <string name="progress">Loading ...</string>
+    <string name="title_follower">Follower</string>
+    <string name="title_following">Following</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="separate"> : </string>
+    <string name="favorites">Favorites</string>
+    <string name="notification_reminder">Notification Reminder</string>
+    <string name="text_notif">Click to open Github User App</string>
+    <string name="setting">Setting</string>
+</resources>
