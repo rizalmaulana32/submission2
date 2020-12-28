@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GitHub Users</string>
+    <string name="app_name">Consumer App</string>
     <string name="github_users">GitHub Users</string>
     <string name="detail_activity">Detail User</string>
     <string name="search_username">Username</string>
@@ -18,4 +18,5 @@
     <string name="notification_reminder">Notification Reminder</string>
     <string name="text_notif">Click to open Github User App</string>
     <string name="setting">Setting</string>
+    <string name="consumer_app">Consumer App</string>
 </resources>

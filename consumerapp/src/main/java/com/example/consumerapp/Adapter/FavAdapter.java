@@ -1,7 +1,6 @@
 package com.example.consumerapp.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.consumerapp.Model.UserModel;
 import com.example.consumerapp.R;
-
-import java.util.ArrayList;
 
 public class FavAdapter extends RecyclerView.Adapter<FavAdapter.NoteViewHolder> {
 
@@ -49,18 +46,19 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.NoteViewHolder> 
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         UserModel listItem = getItemData(position);
         Glide.with(holder.itemView.getContext())
-                .load(listItem.get(position).getAvatarUrl())
+                .load(listItem.getAvatarUrl())
                 .into(holder.imgFavUser);
-        holder.tvName.setText(listItem.get(position).getName());
-        holder.tvUserName.setText(listItem.get(position).getLogin());
+        holder.tvName.setText(listItem.getName());
+        holder.tvUserName.setText(listItem.getLogin());
     }
 
     @Override
     public int getItemCount() {
-        return listItem.size();
+        if (cursor == null) return 0;
+        return cursor.getCount();
     }
 
-    public class NoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class NoteViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvName, tvUserName;
         ImageView imgFavUser;
@@ -70,15 +68,6 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.NoteViewHolder> 
             tvName = itemView.findViewById(R.id.tv_fav_name);
             tvUserName = itemView.findViewById(R.id.tv_fav_user_name);
             imgFavUser = itemView.findViewById(R.id.img_user_favorite);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            UserModel userModel = listItem.get(getAdapterPosition());
-            Intent intent = new Intent(context, DetailUserActivity.class);
-            intent.putExtra("datauser", userModel);
-            view.getContext().startActivity(intent);
         }
     }
 }
