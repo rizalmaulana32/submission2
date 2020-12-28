@@ -2,7 +2,6 @@ package com.example.submission2.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,6 @@ import com.bumptech.glide.Glide;
 import com.example.submission2.DetailUserActivity;
 import com.example.submission2.R;
 import com.example.submission2.Model.UserModel;
-
-import org.parceler.Parcels;
 
 import java.util.ArrayList;
 

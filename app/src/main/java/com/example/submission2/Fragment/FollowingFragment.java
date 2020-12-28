@@ -14,14 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.submission2.Adapter.FollowingAdapter;
-import com.example.submission2.Adapter.ListUserAdapter;
 import com.example.submission2.Retrofit.ApiClient;
-import com.example.submission2.DetailUserActivity;
 import com.example.submission2.Model.FollowingModel;
 import com.example.submission2.R;
 import com.example.submission2.Model.UserModel;
-
-import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +33,6 @@ import retrofit2.Response;
 public class FollowingFragment extends Fragment {
 
     RecyclerView rvFollowing;
-    UserModel userModel;
 
     public FollowingFragment() {
         // Required empty public constructor
