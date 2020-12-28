@@ -23,8 +23,6 @@ import java.util.ArrayList;
 
 public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListViewHolder> {
 
-    public static final String DATA_USER = "datauser";
-    public static final String DATA_EXTRA = "dataextra";
     private Context context;
     private ArrayList<UserModel> listItem;
 
