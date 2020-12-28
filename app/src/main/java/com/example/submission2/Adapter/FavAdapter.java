@@ -43,7 +43,6 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.NoteViewHolder> 
         Glide.with(holder.itemView.getContext())
                 .load(listItem.get(position).getAvatarUrl())
                 .into(holder.imgFavUser);
-        holder.tvName.setText(listItem.get(position).getName());
         holder.tvUserName.setText(listItem.get(position).getLogin());
     }
 
@@ -54,12 +53,11 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.NoteViewHolder> 
 
     public class NoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView tvName, tvUserName;
+        TextView tvUserName;
         ImageView imgFavUser;
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tv_fav_name);
             tvUserName = itemView.findViewById(R.id.tv_fav_user_name);
             imgFavUser = itemView.findViewById(R.id.img_user_favorite);
             itemView.setOnClickListener(this);

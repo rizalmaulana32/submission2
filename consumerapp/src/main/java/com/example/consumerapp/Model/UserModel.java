@@ -37,7 +37,6 @@ public class UserModel implements Parcelable {
 
     public UserModel(Cursor cursor) {
         this.id = cursor.getInt(0);
-        this.name = getFavoriteItem(cursor, DatabaseContract.UserColumn.NAME);
         this.login = getFavoriteItem(cursor, DatabaseContract.UserColumn.USERNAME);
         this.avatarUrl = getFavoriteItem(cursor, DatabaseContract.UserColumn.AVATAR);
     }

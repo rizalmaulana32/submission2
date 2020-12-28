@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.submission2.DataBase.DatabaseContract;
-
 import static com.example.submission2.DataBase.DatabaseContract.UserColumn.TABLE_USER_NAME;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -16,12 +14,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final static String SQL_CREATE_TABLE_NOTE = String.format(
             "CREATE TABLE %s" +
                     "(%s INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "%s TEXT," +
                     "%s TEXT NOT NULL," +
                     "%s TEXT NOT NULL)",
             TABLE_USER_NAME,
             DatabaseContract.UserColumn.ID,
-            DatabaseContract.UserColumn.NAME,
             DatabaseContract.UserColumn.USERNAME,
             DatabaseContract.UserColumn.AVATAR);
 

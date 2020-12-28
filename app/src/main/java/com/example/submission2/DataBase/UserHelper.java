@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import static com.example.submission2.DataBase.DatabaseContract.UserColumn.ID;
 import static com.example.submission2.DataBase.DatabaseContract.UserColumn.AVATAR;
-import static com.example.submission2.DataBase.DatabaseContract.UserColumn.NAME;
 import static com.example.submission2.DataBase.DatabaseContract.UserColumn.TABLE_USER_NAME;
 import static com.example.submission2.DataBase.DatabaseContract.UserColumn.USERNAME;
 
@@ -90,7 +89,6 @@ public class UserHelper {
             do {
                 userModel = new UserModel();
                 userModel.setId(cursor.getInt(cursor.getColumnIndexOrThrow(ID)));
-                userModel.setName(cursor.getString(cursor.getColumnIndexOrThrow(NAME)));
                 userModel.setLogin(cursor.getString(cursor.getColumnIndexOrThrow(USERNAME)));
                 userModel.setAvatarUrl(cursor.getString(cursor.getColumnIndexOrThrow(AVATAR)));
                 userGithub.add(userModel);
@@ -103,7 +101,6 @@ public class UserHelper {
     public long userInsert(UserModel userModel){
         ContentValues contentValues = new ContentValues();
         contentValues.put(ID, userModel.getId());
-        contentValues.put(NAME, userModel.getName());
         contentValues.put(USERNAME, userModel.getLogin());
         contentValues.put(AVATAR, userModel.getAvatarUrl());
         return database.insert(DATABASE_TABLE, null, contentValues);
