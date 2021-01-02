@@ -38,7 +38,6 @@ public class DetailUserActivity extends AppCompatActivity {
     TextView login, company, location, repo;
     ImageView imgPhoto;
     UserHelper userHelper;
-    ArrayList<UserModel> listItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
