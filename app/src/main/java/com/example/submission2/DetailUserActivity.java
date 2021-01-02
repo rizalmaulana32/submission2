@@ -123,21 +123,4 @@ public class DetailUserActivity extends AppCompatActivity {
             }
         });
     }
-
-    private boolean EXIST(String username) {
-        String change = DatabaseContract.UserColumn.USERNAME + "=?";
-        String[] changeArg = {username};
-        String limit = "1";
-        userHelper = new UserHelper(this);
-        userHelper.open();
-        userModel = getIntent().getParcelableExtra("datauser");
-
-        DatabaseHelper userHelper = new DatabaseHelper(getApplicationContext());
-        SQLiteDatabase database = userHelper.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = database.query(TABLE_USER_NAME, null, change, changeArg, null, null, null, limit);
-        boolean exist = (cursor.getCount() > 0);
-        cursor.close();
-        return exist;
-    }
-
 }
