@@ -54,6 +54,9 @@ public class DetailUserActivity extends AppCompatActivity {
         location = findViewById(R.id.tv_location_detail);
         repo = findViewById(R.id.tv_repo_detail);
         imgPhoto = findViewById(R.id.img_users_detail);
+        userModel = getIntent().getParcelableExtra("datauser");
+        userHelper = new UserHelper(this);
+        userHelper.open();
 
         getData();
         onViewPager();
@@ -61,8 +64,6 @@ public class DetailUserActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        userModel = getIntent().getParcelableExtra("datauser");
-
         if (userModel != null) {
             final ProgressDialog progressDialog = new ProgressDialog(DetailUserActivity.this);
             progressDialog.setMessage(getString(R.string.progress));
@@ -87,9 +88,11 @@ public class DetailUserActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<DetailUserModel> call, Throwable t) {
-
+                    Toast.makeText(DetailUserActivity.this, "Failed fetch data !", Toast.LENGTH_SHORT).show();
                 }
             });
+        } else {
+            Toast.makeText(this, "No data !", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -105,38 +108,20 @@ public class DetailUserActivity extends AppCompatActivity {
 
     private void setOnClickFavButton() {
         MaterialFavoriteButton btnFav = findViewById(R.id.btn_favorites);
-        if (EXIST(userModel.getLogin())) {
-            btnFav.setFavorite(true);
-            btnFav.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
-                @Override
-                public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
-                    if (favorite) {
-                        listItem = userHelper.getDataUser();
-                        userHelper.userInsert(userModel);
-                        Toast.makeText(DetailUserActivity.this, "Success added favorite", Toast.LENGTH_SHORT).show();
-                    } else {
-                        listItem = userHelper.getDataUser();
-                        userHelper.userDelete(String.valueOf(userModel.getId()));
-                        Toast.makeText(DetailUserActivity.this, "Success delete favorite", Toast.LENGTH_SHORT).show();
-                    }
+
+        btnFav.setFavorite(userHelper.isUserFavorited(userModel.getLogin()));
+        btnFav.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
+            @Override
+            public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                if (favorite){
+                    userHelper.userInsert(userModel);
+                    Toast.makeText(DetailUserActivity.this, "Success added favorite !", Toast.LENGTH_SHORT).show();
+                } else {
+                    userHelper.userDelete(String.valueOf(userModel.getId()));
+                    Toast.makeText(DetailUserActivity.this, "Success delete favorite 1", Toast.LENGTH_SHORT).show();
                 }
-            });
-        } else {
-            btnFav.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
-                @Override
-                public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
-                    if (favorite) {
-                        listItem = userHelper.getDataUser();
-                        userHelper.userInsert(userModel);
-                        Toast.makeText(DetailUserActivity.this, "Success added favorite", Toast.LENGTH_SHORT).show();
-                    } else {
-                        listItem = userHelper.getDataUser();
-                        userHelper.userDelete(String.valueOf(userModel.getId()));
-                        Toast.makeText(DetailUserActivity.this, "Success delete favorite", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
+            }
+        });
     }
 
     private boolean EXIST(String username) {

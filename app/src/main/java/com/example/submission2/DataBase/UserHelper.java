@@ -110,6 +110,23 @@ public class UserHelper {
         return database.delete(TABLE_USER_NAME,ID + " = '" + id + "'", null);
     }
 
+    public boolean isUserFavorited(String username){
+        Cursor cursor = database.query(
+                DATABASE_TABLE,
+                null,
+                DatabaseContract.UserColumn.USERNAME + "= ?",
+                new String[]{username},
+                null,
+                null,
+                "1"
+        );
+
+        boolean isFavorited = cursor.getCount() > 0;
+        cursor.close();
+
+        return isFavorited;
+    }
+
     public int DeleteProvider(String id) {
         return database.delete(TABLE_USER_NAME, ID+ "=?",new String[]{id});
     }
